@@ -7,14 +7,5 @@
 		"code": "001",
 		"stock": 25,
 		"id": 1
-	},
-	{
-		"title": "Lechuga morada",
-		"description": "Morada y sabrosa",
-		"price": 500,
-		"thumbail": "Sin imagen",
-		"code": "002",
-		"stock": 10,
-		"id": 2
 	}
 ]
