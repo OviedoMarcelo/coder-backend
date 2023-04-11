@@ -1,0 +1,92 @@
+[
+	{
+		"title": "Tomate rojo",
+		"description": "El mejor tomate",
+		"price": 200,
+		"thumbail": "Sin imagen",
+		"code": "001",
+		"stock": 25,
+		"id": 1
+	},
+	{
+		"title": "Lechuga morada",
+		"description": "Morada y sabrosa",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 2
+	},
+	{
+		"title": "Morron",
+		"description": "Crocante",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 3
+	},
+	{
+		"title": "Zanahoria",
+		"description": "Dulce",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 4
+	},
+	{
+		"title": "Papa negra",
+		"description": "Ideal fritar",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 5
+	},
+	{
+		"title": "Perejil",
+		"description": "Fresco",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 6
+	},
+	{
+		"title": "Batata",
+		"description": "Fibrosa",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 7
+	},
+	{
+		"title": "Apio",
+		"description": "Verde fresco",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 8
+	},
+	{
+		"title": "Morron rojo",
+		"description": "el mejor",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 9
+	},
+	{
+		"title": "Cebolla",
+		"description": "Suave",
+		"price": 500,
+		"thumbail": "Sin imagen",
+		"code": "002",
+		"stock": 10,
+		"id": 10
+	}
+]

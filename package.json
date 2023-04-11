@@ -1,9 +1,9 @@
 {
-  "name": "segunda-entrega",
+  "name": "tercera-entrega",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "type": "module", 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/OviedoMarcelo/coder-backend/issues"
   },
-  "homepage": "https://github.com/OviedoMarcelo/coder-backend#readme"
+  "homepage": "https://github.com/OviedoMarcelo/coder-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

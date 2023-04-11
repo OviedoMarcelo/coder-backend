@@ -1,17 +1,16 @@
 import fs from 'fs';
 
-
 export default class ProductManager {
 
-    constructor(pat) {
-        this.path = pat;
+    constructor(path) {
+        this.path = path;
     }
-
 
     //Methods
 
     getProducts = async () => {
         try {
+            console.log(this.path)
             if (fs.existsSync(this.path)) {
                 const data = await fs.promises.readFile(this.path, 'utf-8');
                 const products = JSON.parse(data, null, '\t');
