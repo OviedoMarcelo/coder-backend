@@ -36,7 +36,7 @@ export default class ProductManager {
                 !product.title ||
                 !product.description ||
                 !product.price ||
-                !product.thumbail ||
+                !product.thumbnail ||
                 !product.code ||
                 !product.stock
             ) {
