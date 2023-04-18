@@ -1,28 +1,23 @@
 import express from "express";
-import ProductManager from "./productManager.js";
+import productsRouter from './routes/products.router.js'
+import __dirname from "./utils.js";
 
 const app = express();
 
-//New product manager instance
-
-const productManager = new ProductManager("./productos.json");
+//config params
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//config to support static files
+app.use(express.static(`${__dirname}/public`));
 
-app.get('/productos', async (req, res) => {
+//routes
+app.use('/api/products', productsRouter);
 
-    const products = await productManager.getProducts();
-    //If a 'limit' value exists in the query, return that number of elements. Otherwise, return the entire array.
-    const limit = req.query.limit ? parseInt(req.query.limit) : products.length;
-    res.send(products.slice(0, limit));
+//error controller middleware, allways at the end
 
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).send('Error no controlado');
 })
 
-app.get('/productos/:id', async (req, res) => {
-
-    const prodId = parseInt(req.params.id);
-    const product = await productManager.getProductByID(prodId)
-    product ? res.send(product) : res.send({ error: 'Product not found' });
-
-})
-
-app.listen(8080, () => console.log('Listening on port 8080'))
+app.listen(8080, () => console.log('Server running on port 8080'));

@@ -88,5 +88,14 @@
 		"code": "010",
 		"stock": 7,
 		"id": 10
+	},
+	{
+		"title": "Prueba",
+		"description": "Producto prueba",
+		"price": "1000",
+		"thumbnail": "https:prueba",
+		"code": "012",
+		"stock": "20",
+		"id": 11
 	}
 ]

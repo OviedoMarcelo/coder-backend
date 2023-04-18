@@ -80,13 +80,14 @@ export default class ProductManager {
             const productIndex = products.findIndex(p => p.id === id);
             if (productIndex === -1) {
                 console.log(`No se encontró el producto con el ID ${id} recibido, no se actualiza.`);
-                return;
+                return false;
             }
             const productToUpdate = products[productIndex];
             const productUpdated = { ...productToUpdate, ...updateProduct };
             products.splice(productIndex, 1, productUpdated);
             fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'))
             console.log(`Se actualiza correctamente el producto de ID ${id}  con los nuevos valores`)
+            return true;
 
         } catch (error) {
             console.log(error);
@@ -101,11 +102,12 @@ export default class ProductManager {
             const productIndex = products.findIndex(p => p.id === id);
             if (productIndex === -1) {
                 console.log('No se encontró el producto con el ID recibido, no se borra.');
-                return;
+                return false;
             }
             products.splice(productIndex, 1);
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'))
             console.log(`Se eliminó el producto con ID ${id} correctamente.`);
+            return true;
         } catch (error) {
             console.log(error);
         }
