@@ -10,7 +10,6 @@ export default class ProductManager {
 
     getProducts = async () => {
         try {
-            console.log(this.path)
             if (fs.existsSync(this.path)) {
                 const data = await fs.promises.readFile(this.path, 'utf-8');
                 const products = JSON.parse(data, null, '\t');
@@ -36,9 +35,9 @@ export default class ProductManager {
                 !product.title ||
                 !product.description ||
                 !product.price ||
-                !product.thumbnail ||
                 !product.code ||
-                !product.stock
+                !product.stock ||
+                !product.category
             ) {
                 console.log('No se pudo agregar el producto. Todos los campos son obligatorios, verificar los mismos.')
                 return;
@@ -47,6 +46,9 @@ export default class ProductManager {
 
             const productCodeIndex = products.findIndex((prod) => prod.code === product.code);
             if (productCodeIndex === -1) {
+                if (!product.status) {
+                    product.status = true;
+                }
                 products.push(product)
                 fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'))
                 console.log('Producto agregado correctamente :)')

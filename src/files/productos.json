@@ -3,99 +3,144 @@
 		"title": "iPhone 13 Pro Max",
 		"description": "El último y más avanzado modelo de iPhone",
 		"price": 1499,
-		"thumbnail": "https://i.imgur.com/6cZaHt7.jpg",
+		"thumbnails": [
+			"https://i.imgur.com/6cZaHt7.jpg"
+		],
 		"code": "001",
 		"stock": 25,
-		"id": 1
+		"id": 1,
+		"status": true
 	},
 	{
 		"title": "Samsung Galaxy S21 Ultra",
 		"description": "Pantalla grande y cámara de alta calidad",
 		"price": 1299,
-		"thumbnail": "https://i.imgur.com/M6GqaxH.jpg",
+		"thumbnails": [
+			"https://i.imgur.com/M6GqaxH.jpg"
+		],
 		"code": "002",
 		"stock": 10,
-		"id": 2
+		"id": 2,
+		"status": true
 	},
 	{
 		"title": "Google Pixel 6 Pro",
 		"description": "Innovador en fotografía",
 		"price": 1199,
-		"thumbnail": "https://i.imgur.com/v7XibNQ.jpg",
+		"thumbnails": [
+			"https://i.imgur.com/v7XibNQ.jpg"
+		],
 		"code": "003",
 		"stock": 15,
-		"id": 3
+		"id": 3,
+		"status": true
 	},
 	{
 		"title": "OnePlus 9 Pro",
 		"description": "Gran rendimiento y velocidad",
 		"price": 999,
-		"thumbnail": "https://i.imgur.com/U1Jq0tG.jpg",
+		"thumbnails": [
+			"https://i.imgur.com/U1Jq0tG.jpg"
+		],
 		"code": "004",
 		"stock": 20,
-		"id": 4
+		"id": 4,
+		"status": true
 	},
 	{
 		"title": "Xiaomi Mi 11 Ultra",
 		"description": "Poderosa batería y pantalla curva",
 		"price": 1199,
-		"thumbnail": "https://i.imgur.com/p3q4L4Z.jpg",
+		"thumbnails": [
+			"https://i.imgur.com/p3q4L4Z.jpg"
+		],
 		"code": "005",
 		"stock": 10,
-		"id": 5
+		"id": 5,
+		"status": true
 	},
 	{
 		"title": "Sony Xperia 1 III",
 		"description": "Experiencia de cine en la palma de tu mano",
 		"price": 1299,
-		"thumbnail": "https://i.imgur.com/K8yvXTG.jpg",
+		"thumbnails": [
+			"https://i.imgur.com/K8yvXTG.jpg"
+		],
 		"code": "006",
 		"stock": 8,
-		"id": 6
+		"id": 6,
+		"status": true
 	},
 	{
 		"title": "LG Wing",
 		"description": "Diseño único con pantalla giratoria",
 		"price": 899,
-		"thumbnail": "https://www.lg.com/us/images/smartphones/md07528625/gallery/01-1100.jpg",
+		"thumbnails": [
+			"https://www.lg.com/us/images/smartphones/md07528625/gallery/01-1100.jpg"
+		],
 		"code": "007",
 		"stock": 12,
-		"id": 7
+		"id": 7,
+		"status": true
 	},
 	{
 		"title": "Motorola Edge+",
 		"description": "Gran rendimiento a un precio accesible",
 		"price": 999,
-		"thumbnail": "https://motorolaus.vtexassets.com/arquivos/ids/160025-1000-auto?width=1000&height=auto&aspect=true",
+		"thumbnails": [
+			"https://motorolaus.vtexassets.com/arquivos/ids/160025-1000-auto?width=1000&height=auto&aspect=true"
+		],
 		"code": "008",
 		"stock": 18,
-		"id": 8
+		"id": 8,
+		"status": true
 	},
 	{
 		"title": "Nokia 9 PureView",
 		"description": "Cámara de 5 lentes con calidad Zeiss",
 		"price": 699,
-		"thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81Wp0ULfywL._AC_SL1500_.jpg",
+		"thumbnails": [
+			"https://images-na.ssl-images-amazon.com/images/I/81Wp0ULfywL._AC_SL1500_.jpg"
+		],
 		"code": "009",
 		"stock": 25,
-		"id": 9
+		"id": 9,
+		"status": true
 	},
 	{
 		"title": "Asus ROG Phone 5",
 		"description": "Para los amantes de los juegos móviles",
 		"price": 1099,
-		"thumbnail": "https://www.asus.com/media/global/products/lfuzlktivnjo8xr2/P_setting_fff_1_90_end_600.png",
+		"thumbnails": [
+			"https://www.asus.com/media/global/products/lfuzlktivnjo8xr2/P_setting_fff_1_90_end_600.png"
+		],
 		"code": "010",
 		"stock": 7,
-		"id": 10
+		"id": 10,
+		"status": true
+	},
+	{
+		"title": "OnePlus Nord 2 5G",
+		"description": "Potente, elegante y con 5G",
+		"price": 399,
+		"thumbnails": [
+			"https://images-na.ssl-images-amazon.com/images/I/71TWNhGQ1LL._AC_SL1500_.jpg"
+		],
+		"code": "011",
+		"stock": 60,
+		"id": 11,
+		"status": true
 	},
 	{
 		"title": "Prueba",
 		"description": "Producto prueba",
 		"price": "1000",
-		"thumbnail": "https:prueba",
+		"thumbnails": [
+			"https:prueba"
+		],
 		"code": "012",
 		"stock": "20",
-		"id": 11
+		"id": 12,
+		"status": true
 	}
 ]

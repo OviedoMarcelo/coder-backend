@@ -1,9 +1,9 @@
 import { Router } from "express";
-import ProductManager from "../productManager.js";
+import ProductManager from "../manager/productManager.js";
 
 const router = Router();
 
-const productManager = new ProductManager("./src/productos.json");
+const productManager = new ProductManager("./src/files/productos.json");
 
 router.get('/', async (req, res) => {
 
@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
 
 })
 
-router.get('/product/:id', async (req, res) => {
+router.get('/:pid', async (req, res) => {
 
-    const prodId = parseInt(req.params.id);
+    const prodId = parseInt(req.params.pid);
     const product = await productManager.getProductByID(prodId)
     product ? res.send(product) : res.send({ error: 'Product not found' });
 
@@ -30,9 +30,9 @@ router.post('/', async (req, res) => {
         !product.title ||
         !product.description ||
         !product.price ||
-        !product.thumbnail ||
         !product.code ||
-        !product.stock
+        !product.stock ||
+        !product.category
     ) {
         return res.status(400).send({ status: 'error', error: 'Incomplete or incorrect values' })
     }
@@ -42,16 +42,16 @@ router.post('/', async (req, res) => {
 })
 
 
-router.put('/product/:id', async (req, res) => {
+router.put('/:pid', async (req, res) => {
     const product = req.body;
-    const productId = Number(req.params.id);
+    const productId = Number(req.params.cid);
     const result = await productManager.updateProduct(productId, product)
     result ? res.send({ status: 'Success', message: 'Actualizado corectamente' }) : res.status(400).send({ status: 'error', error: 'No se puedo actualizar' });
 })
 
 
-router.delete('/product/:id', async (req, res) => {
-    const productId = Number(req.params.id);
+router.delete('/:pid', async (req, res) => {
+    const productId = Number(req.params.pid);
     const result = await productManager.deleteProduct(productId)
     console.log(result)
     result ? res.send({ status: 'Success', message: 'Eliminado correctamente' }) : res.status(400).send({ status: 'error', error: 'No se puedo eliminar' });
