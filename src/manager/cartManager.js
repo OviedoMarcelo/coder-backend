@@ -57,6 +57,7 @@ export default class CartManager {
         try {
             const carts = await this.getCarts();
             console.log(cart)
+            //cart id exist?
             const cartIndex = !cart ? -1 :(carts.findIndex((c) => c.id === cart.id))
             if (cartIndex === -1) {
                 const productToAdd = [{id: product.id, quantity: 1}] ;
@@ -78,7 +79,7 @@ export default class CartManager {
             }
             carts.splice(cartIndex, 1, cartToUpdate);
             await fs.promises.writeFile(this.path, JSON.stringify(carts, null, '\t'));
-            console.log(`Se agregó el producto ${product.title} correctamente al carrito ${id}.`);
+            console.log(`Se agregó el producto ${product.title} correctamente al carrito.`);
             return true;
         } catch (error) {
             console.log(error);
