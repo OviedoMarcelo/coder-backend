@@ -1,4 +1,6 @@
 import express from "express";
+import handlerbars from 'express-handlebars'
+import viewsRouter from './routes/views.router.js'
 import productsRouter from './routes/products.router.js'
 import cartsRouter from './routes/carts.router.js'
 import __dirname from "./utils.js";
@@ -11,7 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 //config to support static files
 app.use(express.static(`${__dirname}/public`));
 
+//Config handlebars
+app.engine('handlebars', handlerbars.engine());
+app.set('views', `${__dirname}/views`)
+app.set('view engine', 'handlebars')
+
+
 //routes
+app.use('/', viewsRouter)
+
+//API Rest routes
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 

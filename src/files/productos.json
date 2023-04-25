@@ -9,7 +9,8 @@
 		"code": "001",
 		"stock": 25,
 		"id": 1,
-		"status": true
+		"status": true,
+		"category": "iphone"
 	},
 	{
 		"title": "Samsung Galaxy S21 Ultra",
@@ -21,7 +22,8 @@
 		"code": "002",
 		"stock": 10,
 		"id": 2,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Google Pixel 6 Pro",
@@ -33,7 +35,8 @@
 		"code": "003",
 		"stock": 15,
 		"id": 3,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "OnePlus 9 Pro",
@@ -45,7 +48,8 @@
 		"code": "004",
 		"stock": 20,
 		"id": 4,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Xiaomi Mi 11 Ultra",
@@ -57,7 +61,8 @@
 		"code": "005",
 		"stock": 10,
 		"id": 5,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Sony Xperia 1 III",
@@ -69,7 +74,8 @@
 		"code": "006",
 		"stock": 8,
 		"id": 6,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "LG Wing",
@@ -81,19 +87,21 @@
 		"code": "007",
 		"stock": 12,
 		"id": 7,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Motorola Edge+",
 		"description": "Gran rendimiento a un precio accesible",
 		"price": 999,
 		"thumbnails": [
-			"https://motorolaus.vtexassets.com/arquivos/ids/160025-1000-auto?width=1000&height=auto&aspect=true"
+			"https://motorolaus.vtexassets.com/arquivos/ids/160025-1000-auto?width=1000&height=auto&aspect=true,"
 		],
 		"code": "008",
 		"stock": 18,
 		"id": 8,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Nokia 9 PureView",
@@ -105,7 +113,8 @@
 		"code": "009",
 		"stock": 25,
 		"id": 9,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Asus ROG Phone 5",
@@ -117,7 +126,8 @@
 		"code": "010",
 		"stock": 7,
 		"id": 10,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "OnePlus Nord 2 5G",
@@ -129,7 +139,8 @@
 		"code": "011",
 		"stock": 60,
 		"id": 11,
-		"status": true
+		"status": true,
+		"category": "android"
 	},
 	{
 		"title": "Prueba",
@@ -141,6 +152,20 @@
 		"code": "012",
 		"stock": "20",
 		"id": 12,
+		"status": true,
+		"category": "android"
+	},
+	{
+		"title": "iPhone 14",
+		"description": "El nuevo iPhone 14 con pantalla OLED y cámara triple.",
+		"price": 1099,
+		"thumbnails": [
+			"https://cdn.shopify.com/s/files/1/0024/9803/5810/products/iPhone-14-Silver_1200x1200.jpg?v=1634923426"
+		],
+		"code": "014",
+		"stock": 8,
+		"category": "iphone",
+		"id": 13,
 		"status": true
 	}
 ]
