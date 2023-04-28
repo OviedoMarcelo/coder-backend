@@ -4,6 +4,7 @@ import viewsRouter from './routes/views.router.js'
 import productsRouter from './routes/products.router.js'
 import cartsRouter from './routes/carts.router.js'
 import __dirname from "./utils.js";
+import { Server } from "socket.io";
 
 const app = express();
 
@@ -33,4 +34,9 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error no controlado');
 })
 
-app.listen(8080, () => console.log('Server running on port 8080'));
+const server = app.listen(8080, () => console.log('Server running on port 8080'));
+
+//io configuration
+
+const io = new Server(server);
+app.set('socketio', io);

@@ -1,23 +1,10 @@
 [
 	{
-		"title": "iPhone 13 Pro Max",
-		"description": "El último y más avanzado modelo de iPhone",
-		"price": 1499,
-		"thumbnails": [
-			"https://i.imgur.com/6cZaHt7.jpg"
-		],
-		"code": "001",
-		"stock": 25,
-		"id": 1,
-		"status": true,
-		"category": "iphone"
-	},
-	{
 		"title": "Samsung Galaxy S21 Ultra",
 		"description": "Pantalla grande y cámara de alta calidad",
 		"price": 1299,
 		"thumbnails": [
-			"https://i.imgur.com/M6GqaxH.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "002",
 		"stock": 10,
@@ -30,7 +17,7 @@
 		"description": "Innovador en fotografía",
 		"price": 1199,
 		"thumbnails": [
-			"https://i.imgur.com/v7XibNQ.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "003",
 		"stock": 15,
@@ -43,7 +30,7 @@
 		"description": "Gran rendimiento y velocidad",
 		"price": 999,
 		"thumbnails": [
-			"https://i.imgur.com/U1Jq0tG.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "004",
 		"stock": 20,
@@ -56,7 +43,7 @@
 		"description": "Poderosa batería y pantalla curva",
 		"price": 1199,
 		"thumbnails": [
-			"https://i.imgur.com/p3q4L4Z.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "005",
 		"stock": 10,
@@ -69,7 +56,7 @@
 		"description": "Experiencia de cine en la palma de tu mano",
 		"price": 1299,
 		"thumbnails": [
-			"https://i.imgur.com/K8yvXTG.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "006",
 		"stock": 8,
@@ -82,7 +69,7 @@
 		"description": "Diseño único con pantalla giratoria",
 		"price": 899,
 		"thumbnails": [
-			"https://www.lg.com/us/images/smartphones/md07528625/gallery/01-1100.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "007",
 		"stock": 12,
@@ -95,7 +82,7 @@
 		"description": "Gran rendimiento a un precio accesible",
 		"price": 999,
 		"thumbnails": [
-			"https://motorolaus.vtexassets.com/arquivos/ids/160025-1000-auto?width=1000&height=auto&aspect=true,"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "008",
 		"stock": 18,
@@ -108,7 +95,7 @@
 		"description": "Cámara de 5 lentes con calidad Zeiss",
 		"price": 699,
 		"thumbnails": [
-			"https://images-na.ssl-images-amazon.com/images/I/81Wp0ULfywL._AC_SL1500_.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "009",
 		"stock": 25,
@@ -121,7 +108,7 @@
 		"description": "Para los amantes de los juegos móviles",
 		"price": 1099,
 		"thumbnails": [
-			"https://www.asus.com/media/global/products/lfuzlktivnjo8xr2/P_setting_fff_1_90_end_600.png"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "010",
 		"stock": 7,
@@ -134,7 +121,7 @@
 		"description": "Potente, elegante y con 5G",
 		"price": 399,
 		"thumbnails": [
-			"https://images-na.ssl-images-amazon.com/images/I/71TWNhGQ1LL._AC_SL1500_.jpg"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "011",
 		"stock": 60,
@@ -147,7 +134,7 @@
 		"description": "Producto prueba",
 		"price": "1000",
 		"thumbnails": [
-			"https:prueba"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "012",
 		"stock": "20",
@@ -160,12 +147,25 @@
 		"description": "El nuevo iPhone 14 con pantalla OLED y cámara triple.",
 		"price": 1099,
 		"thumbnails": [
-			"https://cdn.shopify.com/s/files/1/0024/9803/5810/products/iPhone-14-Silver_1200x1200.jpg?v=1634923426"
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
 		],
 		"code": "014",
 		"stock": 8,
 		"category": "iphone",
 		"id": 13,
+		"status": true
+	},
+	{
+		"title": "iPhone 20",
+		"description": "El nuevo iPhone 20 con pantalla OLED y 60 cámaras.",
+		"price": 1099,
+		"thumbnails": [
+			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
+		],
+		"code": "001",
+		"stock": 8,
+		"category": "iphone",
+		"id": 14,
 		"status": true
 	}
 ]
