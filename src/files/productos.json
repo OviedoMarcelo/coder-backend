@@ -1,18 +1,5 @@
 [
 	{
-		"title": "Samsung Galaxy S21 Ultra",
-		"description": "Pantalla grande y cámara de alta calidad",
-		"price": 1299,
-		"thumbnails": [
-			"https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png"
-		],
-		"code": "002",
-		"stock": 10,
-		"id": 2,
-		"status": true,
-		"category": "android"
-	},
-	{
 		"title": "Google Pixel 6 Pro",
 		"description": "Innovador en fotografía",
 		"price": 1199,

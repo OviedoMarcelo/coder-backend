@@ -20,9 +20,7 @@ router.get('/realtimeproducts', async (req, res) => {
 
 
 router.get('/addproduct', (req, res) => {
-    
-
-    res.render('addproduct');
+        res.render('addproduct');
 })
 
 export default router;
