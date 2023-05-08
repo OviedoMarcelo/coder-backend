@@ -3,11 +3,12 @@
 
 ### Pre-requisitos 📋
 
-_Este proyecto fue creado con Node.js y Express. Para su correcto funcionamiento es necesario tener instaladas las siguientes dependencias:_
+_Este proyecto fue creado con Node.js, Express y Mongoose para conectarse con una base Mongo en la nube. Para su correcto funcionamiento es necesario tener instaladas las siguientes dependencias:_
 
 ```
-Node.js
-Express
+Node.js v18.16.0.
+Express v4.18.2
+Mongoose v7.1.0
 ```
 ## Comenzando 🚀
 
