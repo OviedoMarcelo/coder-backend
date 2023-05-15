@@ -1,26 +1,40 @@
 import { Router } from "express";
-import ProductManager from "../manager/productManager.js";
+import Product from "../data/dbManagers/product.js";
 
 
 //Initialize router
 const router = Router();
 //Product manager
-const products = new ProductManager("./src/files/productos.json");
+const productManager = new Product();
 
 //Handlebars render
 router.get('/home', async (req, res) => {
-    const prod = await products.getProducts();
-    res.render('home', {prod});
+    try {
+        const prods = await productManager.getAll();
+        res.render('home', { prods });
+    } catch (error) {
+        console.log(error);
+    }
+
 })
 
 router.get('/realtimeproducts', async (req, res) => {
-    const prod = await products.getProducts();
-    res.render('realTimeProducts',{prod});
+    try {
+        const prods = await productManager.getAll();
+        res.render('realTimeProducts', { prods });
+    } catch (error) {
+        console.log(error);
+    }
+
 })
 
-
 router.get('/addproduct', (req, res) => {
+    try {
         res.render('addproduct');
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 export default router;
