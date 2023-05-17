@@ -1,0 +1,33 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Bienvenidos al Chat de la tienda</h1>
+      <div class="form-group">
+        <input
+          id="chatBox"
+          class="form-control"
+          placeholder="Escribe tu mensaje"
+        />
+      </div>
+      <div class="message-logs">
+        <div id="messageLogs"></div>
+      </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/index.js"></script>
+  </body>
+
+</html>

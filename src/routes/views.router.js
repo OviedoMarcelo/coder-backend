@@ -37,4 +37,12 @@ router.get('/addproduct', (req, res) => {
 
 })
 
+router.get('/chat', (req,res) =>{
+    try {
+        res.render('chat')
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 export default router;

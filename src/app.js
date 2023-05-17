@@ -2,6 +2,7 @@ import express from "express";
 import handlerbars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import productsRouter from './routes/products.router.js';
+import Message from './data/dbManagers/message.js';
 import cartsRouter from './routes/carts.router.js';
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
@@ -48,3 +49,26 @@ const server = app.listen(8080, () => console.log('Server running on port 8080')
 
 const io = new Server(server);
 app.set('socketio', io);
+
+const messages = [];
+const messageManager = new Message();
+
+io.on('connection', socket => {
+    console.log('Nuevo cliente conectado');
+
+    socket.on('message', async data => {
+        try {
+            await messageManager.add(data);
+            const messages = await messageManager.getAll();
+            io.emit('messageLogs', messages);
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    socket.on('authenticated', data => {
+        socket.emit('messageLogs', messages);
+        socket.broadcast.emit('newUserConnected', data);
+    });
+});
+

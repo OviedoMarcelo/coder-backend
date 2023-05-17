@@ -26,7 +26,7 @@ export default class Cart {
 
     /* Add product */
 
-addToCart = async (cart, product) => {
+    addToCart = async (cart, product) => {
 
         const existingCart = await this.getById(cart._id);
 
@@ -37,6 +37,8 @@ addToCart = async (cart, product) => {
         } else {
             // El carrito existe, buscar el producto en el carrito
             console.log('el carrito existe')
+            console.log(existingCart)
+            console.log(product._id)
             const productIndex = existingCart.products.findIndex(
                 (prod) => prod._id === product._id
             );
@@ -54,10 +56,10 @@ addToCart = async (cart, product) => {
 
             // Guardar los cambios en el carrito
             console.log('Antes de guardar los cambios existing cart:')
-            console.log(existingCart)
+            console.log(existingCart.products[0])
             const updatedCart = await cartModel.findByIdAndUpdate(
                 existingCart._id,
-                existingCart,
+                { products: existingCart },
                 { new: true }
             );
 
