@@ -1,5 +1,6 @@
 import express from "express";
 import handlerbars from 'express-handlebars';
+import handlebars from 'handlebars';
 import viewsRouter from './routes/views.router.js';
 import productsRouter from './routes/products.router.js';
 import Message from './data/dbManagers/message.js';
@@ -7,6 +8,8 @@ import cartsRouter from './routes/carts.router.js';
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+/* import { productModel } from './data/models/product.js';
+import fs from 'fs'; */
 
 const app = express();
 
@@ -20,6 +23,11 @@ app.use(express.static(`${__dirname}/public`));
 app.engine('handlebars', handlerbars.engine()); /* defino el motor */
 app.set('views', `${__dirname}/views`) /* directorio de las vistas */
 app.set('view engine', 'handlebars') /* defino la extensión que usara para las vistas */
+
+
+handlebars.registerHelper('eq', function (a, b, options) {
+    return a === b ? options.fn(this) : options.inverse(this);
+});
 
 
 //routes
@@ -72,3 +80,23 @@ io.on('connection', socket => {
     });
 });
 
+
+
+/* // Ruta al archivo JSON de productos
+const productosFilePath = './src/data/files/productos.json';
+
+// Lee el contenido del archivo JSON
+const productosData = fs.readFileSync(productosFilePath, 'utf-8');
+
+// Convierte el contenido del archivo JSON en un array de objetos JavaScript
+const productos = JSON.parse(productosData);
+
+// Crea los productos en la base de datos
+for (const producto of productos) {
+    try {
+        await productModel.create(producto);
+        console.log(`Producto "${producto.title}" agregado a la base de datos`);
+    } catch (error) {
+        console.error(`Error al agregar el producto "${producto.title}":`, error);
+    }
+} */

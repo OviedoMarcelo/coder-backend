@@ -5,9 +5,19 @@ export default class Product {
         console.log('Working with products in the DB')
     }
 
-    getAll = async () => {
-        const products = await productModel.find().lean();
-        return products;
+    getAll = async (limit=5,page=1) => {
+        const products = await productModel.paginate({}, {limit, page, lean: true });
+        return({ 
+            payload: products.docs,
+            totalPage: products.totalPages,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            page: products.page,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevLink: products.hasPrevPage? `/home?page=${products.prevPage}`:null,
+            nextLink: products.hasNextPage? `/home?page=${products.nextPage}`:null,
+        });
     }
 
     getById = async (id) => {

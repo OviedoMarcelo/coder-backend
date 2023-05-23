@@ -19,16 +19,13 @@ router.get('/', async (req, res) => {
         console.log(error);
         res.status(500).send({ status: error, error });
     }
-
-
 })
 
 //Get Cart by ID
 router.get('/:cid', async (req, res) => {
-
     const cartId = req.params.cid;
     const cart = await cartManager.getById(cartId)
-    cart ? res.send(cart) : res.send({ error: 'Cart not found' });
+    cart ? res.send({ status: 'success', payload: cart }) : res.send({ error: 'Cart not found' });
 
 })
 
@@ -46,15 +43,69 @@ router.post('/', async (req, res) => {
 
 
 router.post('/:cid/product/:pid', async (req, res) => {
-    const cartId = req.params.cid;
-    const productId = req.params.pid;
-    const product = await productManager.getById(productId);
-    const cart = await cartManager.getById(cartId);
-    cartManager.addToCart(cart, product);
-    res.send({ status: 'succes', message: 'Producto add to Cart' })
+    try {
+        const cartId = req.params.cid;
+        const productId = req.params.pid;
+        const product = await productManager.getById(productId);
+        const cart = await cartManager.getById(cartId);
+        cartManager.addToCart(cart._id, product._id);
+        res.send({ status: 'succes', message: 'Producto add to Cart' })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ status: error, error });
+    }
+
 
 })
 
+/* Actualiza la cantidad de ejemplares */
+
+router.put('/:cid/product/:pid', async (req, res) => {
+   /*  try {
+        const { quantity } = req.body;
+        console.log(quantity)
+        const cartId = req.params.cid;
+        const productId = req.params.pid;
+        const product = await productManager.getById(productId);
+        const cart = await cartManager.getById(cartId);
+        if (!product || !cart || quantity) {
+            res.status(400).send({ status: error, message: 'bad request' });
+        }
+        await cartManager.updateProductQuantity(cartId, productId, quantity)
+        res.send({status: 'success', message:'Quantity updated succesfully'})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ status: error, error });
+    } */
+})
+
+
+
+
+router.delete('/:cid/product/:pid', async (req, res) => {
+    try {
+        const cartId = req.params.cid;
+        const productId = req.params.pid;
+        await cartManager.deleteProduct(cartId, productId);
+        res.send({ status: 'succes', message: 'Product delete succesfully' })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ status: error, error });
+    }
+
+})
+
+router.delete('/:cid', async (req, res) => {
+    try {
+        const cartId = req.params.cid;
+        await cartManager.deleteAllProducts(cartId);
+        res.send({ status: 'succes', message: 'All products delete succesfully' })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ status: error, error });
+    }
+
+})
 
 
 export default router;

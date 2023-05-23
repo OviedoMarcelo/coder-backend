@@ -1,4 +1,6 @@
 import { cartModel } from '../models/cart.js'
+import { productModel } from '../models/product.js'
+
 
 export default class Cart {
 
@@ -26,50 +28,98 @@ export default class Cart {
 
     /* Add product */
 
-    addToCart = async (cart, product) => {
+    addToCart = async (cartId, productId) => {
 
-        const existingCart = await this.getById(cart._id);
-
-        if (!existingCart) {
-            // El carrito no existe, crear uno nuevo
-            const newCart = await this.add([{ id: product._id, quantity: 1 }]);
-            console.log(`Se creó un nuevo carrito con el ID ${newCart._id}.`);
-        } else {
-            // El carrito existe, buscar el producto en el carrito
-            console.log('el carrito existe')
-            console.log(existingCart)
-            console.log(product._id)
-            const productIndex = existingCart.products.findIndex(
-                (prod) => prod._id === product._id
-            );
-            console.log(productIndex);
-
-            if (productIndex === -1) {
-                // El producto no existe en el carrito, agregarlo
-                existingCart.products.push({ id: product._id, quantity: 1 });
-                console.log('index negativo')
-            } else {
-                // El producto existe en el carrito, actualizar la cantidad
-                console.log('entre al else del index el producto existe')
-                existingCart.products[productIndex].quantity += 1;
+        try {
+            const cart = await cartModel.findById(cartId);
+            if (!cart) {
+                throw new Error('El carrito no existe');
             }
 
-            // Guardar los cambios en el carrito
-            console.log('Antes de guardar los cambios existing cart:')
-            console.log(existingCart.products[0])
-            const updatedCart = await cartModel.findByIdAndUpdate(
-                existingCart._id,
-                { products: existingCart },
-                { new: true }
+            const existingProduct = cart.products.find(
+                (product) => product.product.toString() === productId.toString()
             );
 
-            console.log(
-                `Se agregó el producto ${product.title} correctamente al carrito con ID ${updatedCart._id}.`
-            );
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                const product = await productModel.findById(productId);
+                if (!product) {
+                    throw new Error('El producto no existe');
+                }
+
+                cart.products.push({
+                    product: productId,
+                    quantity: 1,
+                });
+            }
+            await cart.save();
+            console.log('El carrito ha sido actualizado exitosamente');
+            return cart;
+        } catch (error) {
+            console.error('Error al actualizar el carrito:', error.message);
         }
-
     }
 
+    deleteProduct = async (cartId, productId) => {
+
+        const cart = await cartModel.findById(cartId);
+        if (!cart) {
+            return { status: 'error', message: 'Carrito no encontrado' };
+        }
+        const productIndex = cart.products.findIndex((product) => product.product.toString() === productId);
+        if (productIndex === -1) {
+            return { status: 'error', message: 'Producto no encontrado en el carrito' };
+        }
+        cart.products.splice(productIndex, 1);
+        await cart.save();
+        return { status: 'success', message: 'Producto eliminado del carrito' };
+    }
+
+    deleteAllProducts = async (cartId) => {
+
+        const cart = await cartModel.findById(cartId);
+        if (!cart) {
+            return { status: 'error', message: 'Carrito no encontrado' };
+        }
+        cart.products = [];
+        await cart.save();
+        return { status: 'success', message: 'Se eliminaron todos los productos del carrito' };
+    }
+
+
+    updateCart = async (cartId, updatedProducts) => {
+/*         const cart = await cartModel.findById(cartId);
+
+        if (!cart) {
+            return { status: 'error', message: 'Carrito no encontrado' };
+        }
+        cart.products = updatedProducts;
+        await cart.save();
+        console.log('El carrito ha sido actualizado exitosamente');
+        return cart; */
+    }
+
+    updateProductQuantity = async (cartId, productId, quantity) => {
+/*         const cart = await cartModel.findById(cartId);
+        console.log(cart);
+        console.log(cartId)
+        console.log(productId)
+        console.log(quantity)
+        if (!cart) {
+            throw new Error('El carrito no existe');
+        }
+        const product = cart.products.find(
+            product => product.product.toString() === productId.toString()
+        );
+        if (!product) {
+            throw new Error('El producto no existe en el carrito');
+        }
+        product.quantity = quantity;
+        await cart.save();
+        console.log('La cantidad del producto ha sido actualizada exitosamente');
+        return cart; */
+    }
 
 
 }

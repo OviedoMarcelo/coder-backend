@@ -8,16 +8,13 @@ const productManager = new Product();
 /* Get all */
 router.get('/', async (req, res) => {
     try {
-        const products = await productManager.getAll();
-        //If a 'limit' value exists in the query, return that number of elements. Otherwise, return the entire array.
-        const limit = req.query.limit ? parseInt(req.query.limit) : products.length;
-        res.send({ status: 'success', payload: products.slice(0, limit) });
+        const { page = 1, limit = 5 } = req.query;
+        const products = await productManager.getAll(limit, page);
+        res.send({status: 'success', products});
     } catch (error) {
         console.log(error);
         res.status(500).send({ status: error, error });
     }
-
-
 })
 
 /* Get byId */

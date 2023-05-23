@@ -10,7 +10,7 @@
 		"stock": 15,
 		"id": 3,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "OnePlus 9 Pro",
@@ -23,7 +23,7 @@
 		"stock": 20,
 		"id": 4,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "Xiaomi Mi 11 Ultra",
@@ -36,7 +36,7 @@
 		"stock": 10,
 		"id": 5,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "Sony Xperia 1 III",
@@ -49,7 +49,7 @@
 		"stock": 8,
 		"id": 6,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "LG Wing",
@@ -62,7 +62,7 @@
 		"stock": 12,
 		"id": 7,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "Motorola Edge+",
@@ -75,7 +75,7 @@
 		"stock": 18,
 		"id": 8,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "Nokia 9 PureView",
@@ -88,7 +88,7 @@
 		"stock": 25,
 		"id": 9,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "Asus ROG Phone 5",
@@ -101,7 +101,7 @@
 		"stock": 7,
 		"id": 10,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "OnePlus Nord 2 5G",
@@ -114,7 +114,7 @@
 		"stock": 60,
 		"id": 11,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "Prueba",
@@ -127,7 +127,7 @@
 		"stock": "20",
 		"id": 12,
 		"status": true,
-		"category": "android"
+		"category": "Android"
 	},
 	{
 		"title": "iPhone 14",
@@ -138,7 +138,7 @@
 		],
 		"code": "014",
 		"stock": 8,
-		"category": "iphone",
+		"category": "Iphone",
 		"id": 13,
 		"status": true
 	},
@@ -151,7 +151,7 @@
 		],
 		"code": "001",
 		"stock": 8,
-		"category": "iphone",
+		"category": "Iphone",
 		"id": 14,
 		"status": true
 	}
