@@ -50,11 +50,10 @@ router.get('/chat', (req, res) => {
     }
 })
 
-router.get('/cart', async (req, res) => {
+router.get('/cart/:cid', async (req, res) => {
     try {
-        const idCart = '646cf3c9dea79b1340434e45';
+        const idCart = req.params.cid;
         const cart = await cartManager.getById(idCart);
-        console.log(cart)
         res.render('cart', {cart})
     } catch (error) {
         console.log(error)
