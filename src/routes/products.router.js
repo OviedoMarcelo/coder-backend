@@ -8,8 +8,13 @@ const productManager = new Product();
 /* Get all */
 router.get('/', async (req, res) => {
     try {
-        const { page = 1, limit = 5, sort = 'default', category = 'default' } = req.query;
-        const prods = await productManager.getAll(limit, page, sort, category);
+        const { page = 1, limit = 10, sort = null, category = null } = req.query;
+        const query = {}
+        const options = {
+            page: page,
+            limit: limit
+        }
+        const prods = await productManager.getAll(query, options);
         res.send({status: 'success', products});
     } catch (error) {
         console.log(error);
