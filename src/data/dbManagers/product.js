@@ -5,9 +5,10 @@ export default class Product {
         console.log('Working with products in the DB')
     }
 
-    getAll = async (limit=5,page=1) => {
-        const products = await productModel.paginate({}, {limit, page, lean: true });
-        return({ 
+    getAll = async (query,options) => {
+        options.lean=true;
+        const products = await productModel.paginate(query,options);
+        return ({
             payload: products.docs,
             totalPage: products.totalPages,
             prevPage: products.prevPage,
@@ -15,8 +16,8 @@ export default class Product {
             page: products.page,
             hasPrevPage: products.hasPrevPage,
             hasNextPage: products.hasNextPage,
-            prevLink: products.hasPrevPage? `/home?page=${products.prevPage}`:null,
-            nextLink: products.hasNextPage? `/home?page=${products.nextPage}`:null,
+            prevLink: products.hasPrevPage ? `/home?page=${products.prevPage}` : null,
+            nextLink: products.hasNextPage ? `/home?page=${products.nextPage}` : null,
         });
     }
 
@@ -31,7 +32,7 @@ export default class Product {
     }
 
     update = async (id, productUpdated) => {
-        const result = await productModel.findByIdAndUpdate(id, productUpdated, {new: true});
+        const result = await productModel.findByIdAndUpdate(id, productUpdated, { new: true });
         return result;
     }
 

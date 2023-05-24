@@ -4,23 +4,25 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Filtros</h5>
-        <div class="mb-3">
-          <label for="categoryFilter" class="form-label">Categoría</label>
-          <select class="form-select" id="categoryFilter">
-            <option value="">Todos</option>
-            <option value="Android">Android</option>
-            <option value="iPhone">iPhone</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="priceSort" class="form-label">Ordenar por precio</label>
-          <select class="form-select" id="priceSort">
-            <option value="">Ninguno</option>
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendente</option>
-          </select>
-        </div>
-        <button class="btn btn-primary">Aplicar filtros</button>
+        <form action="/home" method="GET">
+  <div class="mb-3">
+    <label for="categoryFilter" class="form-label">Categoría</label>
+    <select class="form-select" id="categoryFilter" name="category">
+      <option value="">Todos</option>
+      <option value="Android">Android</option>
+      <option value="Iphone">IPhone</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="priceSort" class="form-label">Ordenar por precio</label>
+    <select class="form-select" id="priceSort" name="sort">
+      <option value="">Ninguno</option>
+      <option value="asc">Ascendente</option>
+      <option value="desc">Descendente</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Aplicar filtros">
+</form>
       </div>
     </div>
   </div>
@@ -37,12 +39,9 @@
               alt="{{this.title}}"
             />
             <div class="card-body">
+              <p class="card-text">{{this.price}}</p>
               <p class="card-text">{{this.description}}</p>
-              <button
-                id="addToCartButton_{{this._id}}"
-                class="btn btn-primary"
-                onclick="addToCart('{{this._id}}')"
-              >Agregar al carrito</button>
+                <a class="btn btn-primary" href="/" role="button">Agregar al carrito</a>
             </div>
           </div>
         </div>
@@ -85,7 +84,6 @@
         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Siguiente</a>
       </li>
     {{/if}}
-    </li>
   </ul>
 </nav>
 </div>

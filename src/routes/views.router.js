@@ -1,8 +1,6 @@
-import { Router } from "express";
+import { Router, query } from "express";
 import Product from "../data/dbManagers/product.js";
 import Cart from "../data/dbManagers/cart.js";
-
-
 
 //Initialize router
 const router = Router();
@@ -13,10 +11,21 @@ const cartManager = new Cart();
 //Handlebars render
 router.get('/home', async (req, res) => {
     try {
-        const { page = 1, limit = 5 } = req.query;
-        const prods = await productManager.getAll(limit, page);
-        console.log(prods)
+        const { page = 1, limit = 5, sort = null, category = null } = req.query;
+        const query = {}
+        const options = {
+            page: page,
+            limit: limit
+        }
+        if (sort) {
+            options.sort = { price: sort }
+        }
+        if (category) {
+            query.category = category
+        }
+        const prods = await productManager.getAll(query, options);
         res.render('home', { prods });
+
     } catch (error) {
         console.log(error);
     }
@@ -54,7 +63,7 @@ router.get('/cart/:cid', async (req, res) => {
     try {
         const idCart = req.params.cid;
         const cart = await cartManager.getById(idCart);
-        res.render('cart', {cart})
+        res.render('cart', { cart })
     } catch (error) {
         console.log(error)
     }
