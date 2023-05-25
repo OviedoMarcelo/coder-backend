@@ -88,20 +88,21 @@ export default class Cart {
     }
 
 
-    updateCart = async (cartId, updatedProducts) => {
-/*         const cart = await cartModel.findById(cartId);
-
+    updateCartProducts = async (cartId, newProducts) => {
+        const cart = await cartModel.findById(cartId);
         if (!cart) {
-            return { status: 'error', message: 'Carrito no encontrado' };
+            throw new Error('El carrito no existe');
+        
         }
-        cart.products = updatedProducts;
+        console.log(cart.products)
+        cart.products = newProducts;
         await cart.save();
         console.log('El carrito ha sido actualizado exitosamente');
-        return cart; */
+        return cart;
     }
 
     updateProductQuantity = async (cartId, productId, quantity) => {
-/*         const cart = await cartModel.findById(cartId);
+        const cart = await cartModel.findById(cartId);
         console.log(cart);
         console.log(cartId)
         console.log(productId)
@@ -110,7 +111,7 @@ export default class Cart {
             throw new Error('El carrito no existe');
         }
         const product = cart.products.find(
-            product => product.product.toString() === productId.toString()
+            product => product.product._id.toString() === productId.toString()
         );
         if (!product) {
             throw new Error('El producto no existe en el carrito');
@@ -118,7 +119,7 @@ export default class Cart {
         product.quantity = quantity;
         await cart.save();
         console.log('La cantidad del producto ha sido actualizada exitosamente');
-        return cart; */
+        return cart;
     }
 
 

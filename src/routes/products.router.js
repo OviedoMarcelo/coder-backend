@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
             limit: limit
         }
         const prods = await productManager.getAll(query, options);
-        res.send({status: 'success', products});
+        res.send({status: 'success', prods});
     } catch (error) {
         console.log(error);
         res.status(500).send({ status: error, error });

@@ -11,7 +11,7 @@ const cartManager = new Cart();
 //Handlebars render
 router.get('/home', async (req, res) => {
     try {
-        const { page = 1, limit = 5, sort = null, category = null } = req.query;
+        const { page = 1, limit = 10, sort = null, category = null } = req.query;
         const query = {}
         const options = {
             page: page,

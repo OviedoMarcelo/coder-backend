@@ -61,23 +61,43 @@ router.post('/:cid/product/:pid', async (req, res) => {
 /* Actualiza la cantidad de ejemplares */
 
 router.put('/:cid/product/:pid', async (req, res) => {
-   /*  try {
+    try {
         const { quantity } = req.body;
-        console.log(quantity)
         const cartId = req.params.cid;
         const productId = req.params.pid;
         const product = await productManager.getById(productId);
         const cart = await cartManager.getById(cartId);
-        if (!product || !cart || quantity) {
-            res.status(400).send({ status: error, message: 'bad request' });
+        console.log(product)
+        console.log(cart)
+        if (!product || !cart || !quantity) {
+            res.status(400).send({ status: 'error', message: 'bad request or invalid' });
         }
         await cartManager.updateProductQuantity(cartId, productId, quantity)
-        res.send({status: 'success', message:'Quantity updated succesfully'})
+        res.send({ status: 'success', message: 'Quantity updated succesfully' })
     } catch (error) {
         console.log(error);
         res.status(500).send({ status: error, error });
-    } */
+    }
 })
+
+router.put('/:cid', async (req, res) => {
+    try {
+        const { products } = req.body;
+        const cartId = req.params.cid;
+        const cart = await cartManager.getById(cartId);
+        if (!cart || !products) {
+            res.status(400).send({ status: 'error', message: 'bad request or invalid' });
+        }
+        await cartManager.updateCartProducts(cartId, products)
+        res.send({ status: 'success', message: 'Cart updated succesfully' })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ status: error, error });
+    }
+})
+
+
+
 
 
 
