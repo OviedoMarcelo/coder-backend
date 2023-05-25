@@ -69,5 +69,21 @@ router.get('/cart/:cid', async (req, res) => {
     }
 })
 
+router.get('/home/:cid/product/:pid', async (req, res) => {
+    try {
+        const refererUrl = req.headers.referer;
+        const cartId = req.params.cid;
+        const productId = req.params.pid;
+        const product = await productManager.getById(productId);
+        const cart = await cartManager.getById(cartId);
+        cartManager.addToCart(cart._id, product._id);
+        res.redirect(refererUrl)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ status: error, error });
+    }
+})
+
+
 
 export default router;
