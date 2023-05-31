@@ -1,4 +1,4 @@
-import { Router, query } from "express";
+import { Router } from "express";
 import Product from "../data/dbManagers/product.js";
 import Cart from "../data/dbManagers/cart.js";
 
@@ -8,8 +8,21 @@ const router = Router();
 const productManager = new Product();
 const cartManager = new Cart();
 
+//Access Middleware
+
+const publicAccess = (req, res, next) => {
+    if (req.session.user) return res.redirect('/home');
+    next();
+}
+
+const privateAccess = (req, res, next) => {
+    if (!req.session.user) return res.redirect('/login');
+    next();
+}
+
 //Handlebars render
-router.get('/home', async (req, res) => {
+
+router.get('/home', privateAccess, async (req, res) => {
     try {
         const { page = 1, limit = 10, sort = null, category = null } = req.query;
         const query = {}
@@ -24,7 +37,8 @@ router.get('/home', async (req, res) => {
             query.category = category
         }
         const prods = await productManager.getAll(query, options);
-        res.render('home', { prods });
+        const user =  req.session.user
+        res.render('home', { prods, user });
 
     } catch (error) {
         console.log(error);
@@ -84,6 +98,12 @@ router.get('/home/:cid/product/:pid', async (req, res) => {
     }
 })
 
+router.get('/register', publicAccess, async (req, res) => {
+    res.render('register');
+})
 
+router.get('/login', publicAccess, async (req, res) => {
+    res.render('login');
+})
 
 export default router;

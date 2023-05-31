@@ -1,17 +1,55 @@
 import express from "express";
+import session from "express-session";
+/* import FileStore from "session-file-store"; */
 import handlerbars from 'express-handlebars';
 import handlebars from 'handlebars';
 import viewsRouter from './routes/views.router.js';
 import productsRouter from './routes/products.router.js';
 import Message from './data/dbManagers/message.js';
 import cartsRouter from './routes/carts.router.js';
+import sessionRouter from './routes/session.router.js'
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
-/* import { productModel } from './data/models/product.js';
-import fs from 'fs'; */
+import MongoStore from "connect-mongo";
 
+// Initialize express
 const app = express();
+
+//Initialize FileStorage
+/* const fileStorage = FileStore(session) */
+/* // Initialize express-session
+app.use(session({
+    store: new fileStorage({ 
+        path: `${__dirname}/sessions`, 
+        ttl: 30, 
+        retries: 0 }),
+    secret: 'Coder39760',
+    resave: true,
+    saveUninitialized: true
+}))
+ */
+//Mongo DB connect
+let mongooseConnection;
+try {
+    mongooseConnection = await mongoose.connect('mongodb+srv://oviedommarcelo:MvilUchLgiYHlxvY@production.2q9el0c.mongodb.net/?retryWrites=true&w=majority');
+    console.log('MongoDb connected')
+} catch (error) {
+    console.log(error);
+}
+
+
+app.use(session({
+    store: MongoStore.create({
+        client: mongoose.connection.getClient(), 
+        ttl: 3600
+    }),
+    secret: 'Coder39760',
+    resave: true,
+    saveUninitialized: true
+}))
+
+
 
 //config params
 app.use(express.json());
@@ -20,6 +58,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/public`));
 
 //Config handlebars
+
+handlebars.registerPartial('partials', `${__dirname}/views/partials`);
 app.engine('handlebars', handlerbars.engine()); /* defino el motor */
 app.set('views', `${__dirname}/views`) /* directorio de las vistas */
 app.set('view engine', 'handlebars') /* defino la extensión que usara para las vistas */
@@ -36,6 +76,7 @@ app.use('/', viewsRouter)
 //API Rest routes
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
+app.use('/api/sessions', sessionRouter);
 
 //error controller middleware, allways at the end
 
@@ -44,12 +85,6 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error no controlado');
 })
 
-try {
-    await mongoose.connect('mongodb+srv://oviedommarcelo:MvilUchLgiYHlxvY@production.2q9el0c.mongodb.net/?retryWrites=true&w=majority');
-    console.log('MongoDb connected')
-} catch (error) {
-    console.log(error);
-}
 
 const server = app.listen(8080, () => console.log('Server running on port 8080'));
 
