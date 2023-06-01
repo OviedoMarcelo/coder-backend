@@ -62,19 +62,15 @@ export default class Cart {
     }
 
     deleteProduct = async (cartId, productId) => {
-
-        const cart = await cartModel.findById(cartId);
-        if (!cart) {
-            return { status: 'error', message: 'Carrito no encontrado' };
-        }
-        const productIndex = cart.products.findIndex((product) => product.product.toString() === productId);
-        if (productIndex === -1) {
+        const result = await cartModel.updateOne(
+            { _id: cartId },
+            { $pull: { products: { product: productId } } }
+        );
+        if (result.nModified === 0) {
             return { status: 'error', message: 'Producto no encontrado en el carrito' };
         }
-        cart.products.splice(productIndex, 1);
-        await cart.save();
         return { status: 'success', message: 'Producto eliminado del carrito' };
-    }
+    };
 
     deleteAllProducts = async (cartId) => {
 
@@ -92,7 +88,7 @@ export default class Cart {
         const cart = await cartModel.findById(cartId);
         if (!cart) {
             throw new Error('El carrito no existe');
-        
+
         }
         console.log(cart.products)
         cart.products = newProducts;

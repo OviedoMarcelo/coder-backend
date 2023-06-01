@@ -5,9 +5,9 @@ export default class Product {
         console.log('Working with products in the DB')
     }
 
-    getAll = async (query,options) => {
-        options.lean=true;
-        const products = await productModel.paginate(query,options);
+    getAll = async (query, options) => {
+        options.lean = true;
+        const products = await productModel.paginate(query, options);
         return ({
             payload: products.docs,
             totalPage: products.totalPages,

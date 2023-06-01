@@ -70,7 +70,7 @@ router.delete('/:pid', async (req, res) => {
     const result = await productManager.delete(productId)
     if (result != null) {
         const io = req.app.get('socketio');
-        io.emit('updateProducts', await productManager.getAll());
+        /* io.emit('updateProducts', await productManager.getAll()); */
         res.send({ status: 'Success', message: 'Eliminado corectamente' })
     } else {
         res.status(400).send({ status: 'error', error: 'No se encontró el elemento a eliminar' });
