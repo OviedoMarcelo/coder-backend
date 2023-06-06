@@ -22,7 +22,6 @@ router.get('/fail-register', async (req, res) => {
 })
 
 router.post('/login', passport.authenticate('login', { failureRedirect: 'fail-login' }), async (req, res) => {
-    try {
         if (!req.user) {
             return res.status(400).send({ status: 'error', message: 'Invalid user o password' })
         }
@@ -32,13 +31,10 @@ router.post('/login', passport.authenticate('login', { failureRedirect: 'fail-lo
             age: req.user.age,
             email: req.user.email
         }
-        if (email === 'adminCoder@coder.com') {
+        if (req.user.email === 'adminCoder@coder.com') {
             req.session.user.role = 'admin'
         }
         res.send({ status: 'success', message: 'Login success' })
-    } catch (error) {
-        return res.status(500).send({ status: 'error', error });
-    }
 })
 
 router.get('/fail-login', async (req, res) => {

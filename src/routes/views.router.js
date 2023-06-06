@@ -98,11 +98,11 @@ router.get('/home/:cid/product/:pid', async (req, res) => {
     }
 })
 
-router.get('/register', publicAccess, async (req, res) => {
+router.get('/register', publicAccess, (req, res) => {
     res.render('register');
 })
 
-router.get('/login', publicAccess, async (req, res) => {
+router.get('/login', publicAccess, (req, res) => {
     res.render('login');
 })
 
