@@ -38,6 +38,7 @@ router.get('/home', privateAccess, async (req, res) => {
         }
         const prods = await productManager.getAll(query, options);
         const user =  req.session.user
+        console.log(user)
         res.render('home', { prods, user });
 
     } catch (error) {
