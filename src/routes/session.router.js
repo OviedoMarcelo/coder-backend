@@ -1,5 +1,6 @@
 import { Router } from "express";
-import userModel from "../data/models/users.model.js";
+import passport from "passport";
+
 
 //Session router
 const router = Router();
@@ -12,49 +13,38 @@ function auth(req, res, next) {
     return res.status(401).send('error de autenticación')
 }
 
-router.post('/register', async (req, res) => {
-    try {
-        const { first_name, last_name, email, age, password } = req.body;
-        const exist = await userModel.findOne({ email });
-
-        if (exist) return res.status(400).send({ status: 'error', error: 'El usuario ya existe' });
-
-        const user = {
-            first_name,
-            last_name,
-            email,
-            age,
-            password,
-        }
-        await userModel.create(user);
-        res.send({ status: 'success', message: 'user registered' })
-    } catch (error) {
-        return res.status(500).send({ status: 'error', error });
-    }
+router.post('/register', passport.authenticate('register', { failureRedirect: 'fail-register' }), async (req, res) => {
+    res.send({ status: 'success', message: 'user registered' })
 })
 
-router.post('/login', async (req, res) => {
+router.get('/fail-register', async (req, res) => {
+    res.send({ status: error, message: 'register fail' })
+})
+
+router.post('/login', passport.authenticate('login', { failureRedirect: 'fail-login' }), async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const user = await userModel.findOne({ email, password });
-        if (!user) return res.status(400).send({ status: 'error', error: 'incorrect credentials' })
-
-        req.session.user = {
-            name: `${user.first_name} ${user.last_name}`,
-            email: user.email,
-            age: user.age,
-            role: 'user'
+        if (!req.user) {
+            return res.status(400).send({ status: 'error', message: 'Invalid user o password' })
         }
-        res.send({ status: 'success', message: 'login success' })
-
-        if (email === 'adminCoder@coder.com' && 'adminCod3r123') {
+        req.session.user = {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            age: req.user.age,
+            email: req.user.email
+        }
+        if (email === 'adminCoder@coder.com') {
             req.session.user.role = 'admin'
         }
-
+        res.send({ status: 'success', message: 'Login success' })
     } catch (error) {
         return res.status(500).send({ status: 'error', error });
     }
 })
+
+router.get('/fail-login', async (req, res) => {
+    res.send({ status: "error", message: 'Login fail' })
+})
+
 
 //Async?
 router.get('/logout', (req, res) => {

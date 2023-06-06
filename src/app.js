@@ -12,6 +12,8 @@ import __dirname from "./utils.js";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
+import initializePassport from "./config/passport.config.js";
+import passport from "passport";
 
 // Initialize express
 const app = express();
@@ -56,6 +58,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //config to support static files
 app.use(express.static(`${__dirname}/public`));
+
+//Passport
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Config handlebars
 
