@@ -38,7 +38,6 @@ router.get('/home', privateAccess, async (req, res) => {
         }
         const prods = await productManager.getAll(query, options);
         const user =  req.session.user
-        console.log(user)
         res.render('home', { prods, user });
 
     } catch (error) {
@@ -99,6 +98,7 @@ router.get('/home/:cid/product/:pid', async (req, res) => {
     }
 })
 
+//Login and register views
 router.get('/register', publicAccess, (req, res) => {
     res.render('register');
 })

@@ -1,23 +1,49 @@
-<div>
-    <h1>Registro</h1>
-    <form id="registerForm">
-        <label>Nombre</label>
-        <input name="first_name">
-        <br/>
-        <label>Apellido</label>
-        <input name="last_name">
-        <br/>
-        <label>Email</label>
-        <input name="email">
-        <br/>
-        <label>Edad</label>
-        <input name="age">
-        <br/>
-        <label>Contraseña</label>
-        <input name="password" type="password">
-        <input type="submit">
-    </form>
-    <p>¿Ya tienes una cuenta? <a href="/login">Ingresa aquí</a></p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<script src="/js/register.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/register.css" />
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+        <form id="registerForm" class="form">
+            <p class="title">Registro </p>
+            <p class="message">Registrate en nuestro sistema para tener acceso </p>
+            <div class="flex">
+                <label>
+                    <input name="first_name" required="" placeholder="" type="text" class="input">
+                    <span>Nombre</span>
+                </label>
+
+                <label>
+                    <input name="last_name" required="" placeholder="" type="text" class="input">
+                    <span>Apellido</span>
+                </label>
+            </div>
+
+            <label>
+                <input name="age" required="" placeholder="" type="number" class="input">
+                <span>Edad</span>
+            </label>
+
+            <label>
+                <input name="email" required="" placeholder="" type="email" class="input">
+                <span>Email</span>
+            </label>
+
+            <label>
+                <input name="password" type="password" class="input">
+                <span>Constraseña</span>
+            </label>
+            <button class="submit" type="submit">Registrarse</button>
+            <p class="signin">¿Ya tiene una cuenta? <a href="/login">Signin</a> </p>
+        </form>
+    </div>
+    <script src="/js/register.js"></script>
+</body>
+
+</html>

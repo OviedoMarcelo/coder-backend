@@ -5,14 +5,6 @@ import passport from "passport";
 //Session router
 const router = Router();
 
-function auth(req, res, next) {
-    if (req.session?.user === 'pepe' && req.session?.admin) {
-        return next();
-    }
-
-    return res.status(401).send('error de autenticación')
-}
-
 router.post('/register', passport.authenticate('register', { failureRedirect: 'fail-register' }), async (req, res) => {
     res.send({ status: 'success', message: 'user registered' })
 })
@@ -41,6 +33,16 @@ router.get('/fail-login', async (req, res) => {
     res.send({ status: "error", message: 'Login fail' })
 })
 
+router.get('/github', passport.authenticate('github', { scope: ['user:email'] }
+), async (req, res) => {
+    res.send({ status: 'success', message: 'User registered successfully' })
+});
+
+router.get('/github-callback', passport.authenticate('github', { failureRedirect: '/login' }
+), async (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/home')
+})
 
 //Async?
 router.get('/logout', (req, res) => {

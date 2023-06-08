@@ -1,6 +1,5 @@
 import express from "express";
 import session from "express-session";
-/* import FileStore from "session-file-store"; */
 import handlerbars from 'express-handlebars';
 import handlebars from 'handlebars';
 import viewsRouter from './routes/views.router.js';
@@ -18,20 +17,6 @@ import passport from "passport";
 // Initialize express
 const app = express();
 
-//Initialize FileStorage
-/* const fileStorage = FileStore(session) */
-/* // Initialize express-session
-app.use(session({
-    store: new fileStorage({ 
-        path: `${__dirname}/sessions`, 
-        ttl: 30, 
-        retries: 0 }),
-    secret: 'Coder39760',
-    resave: true,
-    saveUninitialized: true
-}))
- */
-//Mongo DB connect
 let mongooseConnection;
 try {
     mongooseConnection = await mongoose.connect('mongodb+srv://oviedommarcelo:MvilUchLgiYHlxvY@production.2q9el0c.mongodb.net/?retryWrites=true&w=majority');
@@ -43,7 +28,7 @@ try {
 
 app.use(session({
     store: MongoStore.create({
-        client: mongoose.connection.getClient(), 
+        client: mongoose.connection.getClient(),
         ttl: 3600
     }),
     secret: 'Coder39760',
@@ -121,24 +106,3 @@ io.on('connection', socket => {
         socket.broadcast.emit('newUserConnected', data);
     });
 });
-
-
-
-/* // Ruta al archivo JSON de productos
-const productosFilePath = './src/data/files/productos.json';
-
-// Lee el contenido del archivo JSON
-const productosData = fs.readFileSync(productosFilePath, 'utf-8');
-
-// Convierte el contenido del archivo JSON en un array de objetos JavaScript
-const productos = JSON.parse(productosData);
-
-// Crea los productos en la base de datos
-for (const producto of productos) {
-    try {
-        await productModel.create(producto);
-        console.log(`Producto "${producto.title}" agregado a la base de datos`);
-    } catch (error) {
-        console.error(`Error al agregar el producto "${producto.title}":`, error);
-    }
-} */
